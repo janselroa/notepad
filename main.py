@@ -4,7 +4,7 @@ from io import open
 
 # Configuracion de la raiz de nuestro editor
 root = Tk()
-root.title("Blog de notas")
+root.title("Bloc de notas")
 root.iconbitmap("bloc.ico")
 
 url_file = ""
