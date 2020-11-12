@@ -7,13 +7,12 @@ echo en Python
 |---------|-------------|-----|-----------------|
 | Tkinter | **Tkinter** es el paquete que se considera un estándar para la **interfaz gráfica de usuario** para Python | En este proyecto Tkinter cumple la labor de crear y manejar la interfaz de usuario | Puedes leer más sobre Tkinter [aquí](https://guia-tkinter.readthedocs.io/es/develop/) |
 
-
-## Uso
-
-Descargar
+### Descargar
 ```shell
 git clone https://github.com/janselroa/Bloc-de-notas-Python.git
 ```
+
+### Uso
 
 ###### Nos trasladamos dentro del directorio del repo utilizando el comando `cd` 
 ```shell
