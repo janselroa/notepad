@@ -4,7 +4,7 @@ from io import open
 
 # Configuracion de la raiz de nuestro editor
 root = Tk()
-title="Bloc de notas | Python"
+title="Bloc de notas | Python "
 root.title(title)
 root.iconbitmap("bloc.ico")
 
