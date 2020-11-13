@@ -26,7 +26,7 @@ cd Bloc-de-notas-Python
 ```shell
 python main.py
 ```
-linux y mac no reconocen el .ico , si es usuario de estos sistemas solo cambi el formato del archivo ```bloc.ico``` rename a ```bloc.iconos```
+linux y mac no reconocen el .ico , si es usuario de estos sistemas solo cambie el formato del archivo de```bloc.ico``` a  ```bloc.icons```
 
 ```
 Copyright (C) 2020 - JanselRoa
