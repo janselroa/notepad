@@ -30,32 +30,30 @@ def open_file():
     global url_file
     url_file = f.askopenfilename(initialdir='.', filetypes=[("Archivos de texto", "*.txt"), ("Otros", "*")], title="Abrir archivo")
     if url_file != "":
-        file = open(url_file, 'r')
-        content = file.read()
-        text.delete(1.0, "end")
-        text.insert('insert', content)
-        file.close()
+        with open(url_file. 'r') as file:
+            file = open(url_file, 'r')
+            content = file.read()
+            text.delete(1.0, "end")
+            text.insert('insert', content)
         root.title(url_file + TITLE)
 
 def save_file():
     global url_file
     if url_file != "":
         content = text.get(1.0, "end-1c")
-        file = open(url_file, 'w+')
-        file.write(content)
-        root.title("Archivo guardado en " + url_file + TITLE)
-        file.close()
+        with open(url_file, "w+") as file:
+            file.write(content)
+            root.title("Archivo guardado en " + url_file + TITLE)
     else:
         file = f.asksaveasfile(title="Save file", mode="w", defaultextension=".txt")
         if file is not None:
             url_file = file.name
             content = text.get(1.0, "end-1c")
-            file = open(url_file, 'w+')
-            file.write(content)
-            root.title("Archivo guardado en " + url_file + TITLE)
-            url_file = ""
-            root.title("Guardado cancelado " + url_file + TITLE)
-
+            with open(url_file, "w+") as file:
+                file.write(content)
+                root.title("Archivo guardado en " + url_file + TITLE)
+                url_file = ""
+                root.title("Guardado cancelado " + url_file + TITLE) 
 # Menú
 bar = Menu(root)
 file_menu = Menu(bar, tearoff=0)
