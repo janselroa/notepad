@@ -30,7 +30,7 @@ def open_file():
     global url_file
     url_file = f.askopenfilename(initialdir='.', filetypes=[("Archivos de texto", "*.txt"), ("Otros", "*")], title="Abrir archivo")
     if url_file != "":
-        with open(url_file. 'r') as file:
+        with open(url_file, 'r') as file:
             file = open(url_file, 'r')
             content = file.read()
             text.delete(1.0, "end")
