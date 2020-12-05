@@ -24,22 +24,18 @@ def new_file():
     # Borra desde el primer caracter hasta el ultimo
     text.delete(1.0, "end")
     url_file = ""
-    root.title(url_file + title)
-
+    root.title(url_file + TITLE) 
 
 def open_file():
     global url_file
-    url_file = f.askopenfilename(initialdir='.', filetype=((
-                                                               "Archivos de texto", "*.txt"
-                                                           ),), title="Open File")
+    url_file = f.askopenfilename(initialdir='.', filetype=[("Archivos de texto", "*.txt"), ("Otros", "*")], title="Abrir archivo")
     if url_file != "":
         file = open(url_file, 'r')
         content = file.read()
         text.delete(1.0, "end")
         text.insert('insert', content)
         file.close()
-        root.title(url_file + title)
-
+        root.title(url_file + TITLE)
 
 def save_file():
     global url_file
@@ -47,7 +43,7 @@ def save_file():
         content = text.get(1.0, "end-1c")
         file = open(url_file, 'w+')
         file.write(content)
-        root.title("Archivo guardado en " + url_file + title)
+        root.title("Archivo guardado en " + url_file + TITLE)
         file.close()
     else:
         file = f.asksaveasfile(title="Save file", mode="w", defaultextension=".txt")
@@ -56,13 +52,9 @@ def save_file():
             content = text.get(1.0, "end-1c")
             file = open(url_file, 'w+')
             file.write(content)
-
-
-            root.title("Archivo guardado en " + url_file + title)
-            file.close()
-        else:
+            root.title("Archivo guardado en " + url_file + TITLE)
             url_file = ""
-            root.title("Guardado cancelado " + url_file + title)
+            root.title("Guardado cancelado " + url_file + TITLE)
 
 # Menú
 bar = Menu(root)
@@ -74,7 +66,6 @@ file_menu.add_separator()
 file_menu.add_command(label="Guardar archivo", command=save_file)
 file_menu.add_separator()
 file_menu.add_command(label="Salir", command=root.quit)
-
 bar.add_cascade(menu=file_menu, label="Archivo")
 
 # caja de text, donde se escribe ._.XD
