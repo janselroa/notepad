@@ -12,9 +12,7 @@ root = Tk()
 root.title(TITLE)
 if platform.system() == "Windows":
     root.iconbitmap("bloc.ico")
-  # poner el icono en Windows como estaba antes
 else:
-   # Lo que hay puesto ahora mismo
     ICON_ROUTE = ["img/icon.ico", "img/icon.xbm"]
 # Modificar el icono dependiendo del sistema operativo en el que se
 # encuentra el usuario utilizando platform
