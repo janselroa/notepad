@@ -11,13 +11,9 @@ TITLE = "Bloc de notas | Python"
 root = Tk()
 root.title(TITLE)
 if platform.system() == "Windows":
-    root.iconbitmap("bloc.ico")
+    root.iconbitmap("img/icon.ico")
 else:
-    ICON_ROUTE = ["img/icon.ico", "img/icon.xbm"]
-# Modificar el icono dependiendo del sistema operativo en el que se
-# encuentra el usuario utilizando platform
-    icon_ext = "ico" if platform.system().lower() == "windows" else "xbm"
-    root.iconphoto(True, PhotoImage(os.path.join(sys.path[0], f"img/icon.{icon_ext}")))
+    root.iconphoto(True, PhotoImage(os.path.join(sys.path[0], "img/icon.xbm")))
 
 url_file = ""
 # Funciones
