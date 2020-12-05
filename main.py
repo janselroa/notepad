@@ -1,16 +1,22 @@
 from tkinter import *
 from tkinter import filedialog as f
 from io import open
+import os
+import platform
+
+# Constantes del programa
+TITLE = "Bloc de notas | Python"
+ICON_ROUTE = ["img/icon.ico", "img/icon.xbm"]
 
 # Configuracion de la raiz de nuestro editor
 root = Tk()
-title="Bloc de notas | Python "
-root.title(title)
-root.iconbitmap("bloc.ico")
+root.title(TITLE)
+# Modificar el icono dependiendo del sistema operativo en el que se
+# encuentra el usuario utilizando platform
+icon_ext = "ico" if platform.system().lower() == "windows" else "xbm"
+root.iconphoto(True, PhotoImage(os.path.join(sys.path[0], f"img/icon.{icon_ext}")))
 
 url_file = ""
-
-
 # Funciones
 
 def new_file():
