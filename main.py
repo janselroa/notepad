@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import filedialog as f
+from tkinter import messagebox
 from io import open
 import os
 import platform
@@ -27,8 +28,6 @@ def new_file():
 
 def open_file():
     global url_file
-    if url_file != "LICENSE":
-        url_file = f.askopenfilename(initialdir='.', filetypes=[("Archivos de texto", "*.txt"), ("Otros", "*")], title="Abrir archivo")
     if url_file != "":
         with open(url_file, 'r') as file:
             file = open(url_file, 'r')
@@ -56,9 +55,29 @@ def save_file():
                 root.title("Guardado cancelado " + url_file + TITLE) 
 
 def display_license():
-    global url_file
-    url_file = "LICENSE"
-    open_file()
+    with open("LICENSE", "r") as file:
+        m = file.read()
+    messagebox.showinfo("License", m)
+
+def display_credits():
+    LINK = "https://github.com/janselroa/bloc-de-notas-python"
+    m = f"""
+Esta aplicación ha sido desarroyada por Jansel Roa en su repositorio de GitHub:
+
+{LINK}
+
+Puedes leer la lista completa de contribuidores de esta aplicación en el archivo contributors.md
+    """
+    messagebox.showinfo("Créditos", m)
+
+def display_contact():
+    m = """
+Si necesitas contactar en relacción con este programa, puedes hacerlo en nuestro repositorio de GitHub.
+
+Tambien puedes contactar a JanselRoa en twitter como @RoaJansel.
+"""
+    messagebox.showinfo("Contacto", m)
+
 
 # Menú
 bar = Menu(root)
@@ -70,6 +89,8 @@ file_menu.add_command(label="Salir", command=root.quit)
 bar.add_cascade(menu=file_menu, label="Archivo")
 more_menu = Menu(bar, tearoff=0)
 more_menu.add_command(label="Licencia", command=display_license)
+more_menu.add_command(label="Créditos", command=display_credits)
+more_menu.add_command(label="Contacto", command=display_contact)
 bar.add_cascade(menu=more_menu, label="Sobre")
 
 # caja de text, donde se escribe ._.XD
