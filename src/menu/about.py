@@ -10,7 +10,7 @@ def display_license():
 def display_credits():
     LINK = "https://github.com/janselroa/bloc-de-notas-python"
     m = f"""
-Esta aplicación ha sido desarroyada por Jansel Roa en su repositorio de GitHub:
+Esta aplicación ha sido desarrollada por Jansel Roa en su repositorio de GitHub:
 
 {LINK}
 
