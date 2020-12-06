@@ -27,7 +27,8 @@ def new_file():
 
 def open_file():
     global url_file
-    url_file = f.askopenfilename(initialdir='.', filetypes=[("Archivos de texto", "*.txt"), ("Otros", "*")], title="Abrir archivo")
+    if url_file != "LICENSE":
+        url_file = f.askopenfilename(initialdir='.', filetypes=[("Archivos de texto", "*.txt"), ("Otros", "*")], title="Abrir archivo")
     if url_file != "":
         with open(url_file, 'r') as file:
             file = open(url_file, 'r')
@@ -53,17 +54,23 @@ def save_file():
                 root.title("Archivo guardado en " + url_file + TITLE)
                 url_file = ""
                 root.title("Guardado cancelado " + url_file + TITLE) 
+
+def display_license():
+    global url_file
+    url_file = "LICENSE"
+    open_file()
+
 # Menú
 bar = Menu(root)
 file_menu = Menu(bar, tearoff=0)
 file_menu.add_command(label="Nuevo archivo", command=new_file)
-file_menu.add_separator()
 file_menu.add_command(label="Abrir archivo", command=open_file)
-file_menu.add_separator()
 file_menu.add_command(label="Guardar archivo", command=save_file)
-file_menu.add_separator()
 file_menu.add_command(label="Salir", command=root.quit)
 bar.add_cascade(menu=file_menu, label="Archivo")
+more_menu = Menu(bar, tearoff=0)
+more_menu.add_command(label="Licencia", command=display_license)
+bar.add_cascade(menu=more_menu, label="Sobre")
 
 # caja de text, donde se escribe ._.XD
 text = Text(root)
