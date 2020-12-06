@@ -101,28 +101,23 @@ file_menu.add_command(label="Guardar", command=save_file)
 file_menu.add_command(label="Guardar como", command=save_file_as)
 file_menu.add_command(label="Salir", command=root.quit)
 bar.add_cascade(menu=file_menu, label="Archivo")
+
+#menu de edicion
+editar = Menu(bar, tearoff=0)
+editar.add_command(label="Deshacer     ", command=adeshacer)
+editar.add_command(label="Rehacer     ", command=arehacer)
+editar.add_separator()
+editar.add_command(label="Copiar     ", command=acopiar)
+editar.add_command(label="Pegar     ", command=apegar)
+editar.add_command(label="Cortar     ", command=acortar)
+bar.add_cascade(label="Edición", menu=editar)
+
+# menu de ayuda
 more_menu = Menu(bar, tearoff=0)
 more_menu.add_command(label="Licencia", command=about.display_license)
 more_menu.add_command(label="Créditos", command=about.display_credits)
 more_menu.add_command(label="Contacto", command=about.display_contact)
-bar.add_cascade(menu=more_menu, label="Acerca de...")
-
-editar = Menu(bar, tearoff=0)
-
-editar.add_command(label="Deshacer     ", command=adeshacer)
-
-editar.add_command(label="Rehacer     ", command=arehacer)
-
-editar.add_separator()
-
-editar.add_command(label="Copiar     ", command=acopiar)
-
-editar.add_command(label="Pegar     ", command=apegar)
-
-editar.add_command(label="Cortar     ", command=acortar)
-
-bar.add_cascade(label="Edición", menu=editar)
-
+bar.add_cascade(menu=more_menu, label="Ayuda")
 
 # caja de text, donde se escribe ._.XD
 text = Text(root)
