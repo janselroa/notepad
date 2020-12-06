@@ -1,0 +1,6 @@
+=================COLABORADORES DEL PROJECTO==================
+
+          NOMBRE          |               GITHUB
+--------------------------|----------------------------------
+- Jansel Roa              | github.com/janselroa
+- Pablo Corbalan          | github.com/pblcc
