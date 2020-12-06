@@ -59,19 +59,19 @@ editor = Text(root, undo="true")
 
 editor.pack(side=TOP, fill=BOTH, expand=1)
 
-def acopiar():
+def copiar():
 
     editor.clipboard_clear()
 
     editor.clipboard_append(editor.selection_get())
 
 
-def apegar():
+def pegar():
 
     editor.insert(INSERT, editor.clipboard_get())
 
 
-def acortar():
+def cortar():
 
     editor.clipboard_clear()
 
@@ -80,12 +80,12 @@ def acortar():
     editor.delete("sel.first", "sel.last")
 
 
-def adeshacer():
+def deshacer():
 
     editor.edit_undo()
 
 
-def arehacer():
+def rehacer():
 
     editor.edit_redo()
 
@@ -104,12 +104,12 @@ bar.add_cascade(menu=file_menu, label="Archivo")
 
 #menu de edicion
 editar = Menu(bar, tearoff=0)
-editar.add_command(label="Deshacer     ", command=adeshacer)
-editar.add_command(label="Rehacer     ", command=arehacer)
+editar.add_command(label="Deshacer     ", command=deshacer)
+editar.add_command(label="Rehacer     ", command=rehacer)
 editar.add_separator()
-editar.add_command(label="Copiar     ", command=acopiar)
-editar.add_command(label="Pegar     ", command=apegar)
-editar.add_command(label="Cortar     ", command=acortar)
+editar.add_command(label="Copiar     ", command=copiar)
+editar.add_command(label="Pegar     ", command=pegar)
+editar.add_command(label="Cortar     ", command=cortar)
 bar.add_cascade(label="Edición", menu=editar)
 
 # menu de ayuda
