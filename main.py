@@ -28,40 +28,42 @@ def new_file():
 
 def open_file():
     global url_file
+    url_file = f.askopenfilename(initialdir='.', filetypes=[("Archivos de texto", "*.txt"), ("Otros", "*")], title="Abrir archivo")
     if url_file != "":
         with open(url_file, 'r') as file:
             file = open(url_file, 'r')
             content = file.read()
             text.delete(1.0, "end")
             text.insert('insert', content)
-        root.title(url_file + TITLE)
+            root.title(f"{url_file} {TITLE}")
 
 def save_file():
     global url_file
-    if url_file != "":
+    if url_file == "":
+        save_file_as()
+    else:
         content = text.get(1.0, "end-1c")
         with open(url_file, "w+") as file:
             file.write(content)
-            root.title("Archivo guardado en " + url_file + TITLE)
-    else:
-        file = f.asksaveasfile(title="Save file", mode="w", defaultextension=".txt")
-        if file is not None:
-            url_file = file.name
-            content = text.get(1.0, "end-1c")
-            with open(url_file, "w+") as file:
-                file.write(content)
-                root.title("Archivo guardado en " + url_file + TITLE)
-                url_file = ""
-                root.title("Guardado cancelado " + url_file + TITLE) 
+            root.title(f"Archivo guardado en {url_file} {TITLE}")
 
+def save_file_as():
+    global url_file
+    url_file = f.asksaveasfile(initialdir='.', filetypes=[("Archivos de texto", "*.txt"), ("Otros", "*")], title="Guardar archivo como")
+    content = text.get(1.0, "end-1c")
+    if url_file not in [None, ""]:
+        with open(url_file.name, "w+") as file:
+            file.write(content)
+            root.title(f"Archivo guardado en {url_file.name} {TITLE}")
 
 
 # Menú
 bar = Menu(root)
 file_menu = Menu(bar, tearoff=0)
-file_menu.add_command(label="Nuevo archivo", command=new_file)
-file_menu.add_command(label="Abrir archivo", command=open_file)
-file_menu.add_command(label="Guardar archivo", command=save_file)
+file_menu.add_command(label="Nuevo", command=new_file)
+file_menu.add_command(label="Abrir", command=open_file)
+file_menu.add_command(label="Guardar", command=save_file)
+file_menu.add_command(label="Guardar como", command=save_file_as)
 file_menu.add_command(label="Salir", command=root.quit)
 bar.add_cascade(menu=file_menu, label="Archivo")
 more_menu = Menu(bar, tearoff=0)
