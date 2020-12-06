@@ -55,6 +55,41 @@ def save_file_as():
         with open(url_file.name, "w+") as file:
             file.write(content)
             root.title(f"Archivo guardado en {url_file.name} {TITLE}")
+editor = Text(root, undo="true")
+
+editor.pack(side=TOP, fill=BOTH, expand=1)
+
+def acopiar():
+
+    editor.clipboard_clear()
+
+    editor.clipboard_append(editor.selection_get())
+
+
+def apegar():
+
+    editor.insert(INSERT, editor.clipboard_get())
+
+
+def acortar():
+
+    editor.clipboard_clear()
+
+    editor.clipboard_append(editor.selection_get())
+
+    editor.delete("sel.first", "sel.last")
+
+
+def adeshacer():
+
+    editor.edit_undo()
+
+
+def arehacer():
+
+    editor.edit_redo()
+
+
 
 
 # Menú
@@ -71,6 +106,23 @@ more_menu.add_command(label="Licencia", command=about.display_license)
 more_menu.add_command(label="Créditos", command=about.display_credits)
 more_menu.add_command(label="Contacto", command=about.display_contact)
 bar.add_cascade(menu=more_menu, label="Acerca de...")
+
+editar = Menu(bar, tearoff=0)
+
+editar.add_command(label="Deshacer     ", command=adeshacer)
+
+editar.add_command(label="Rehacer     ", command=arehacer)
+
+editar.add_separator()
+
+editar.add_command(label="Copiar     ", command=acopiar)
+
+editar.add_command(label="Pegar     ", command=apegar)
+
+editar.add_command(label="Cortar     ", command=acortar)
+
+bar.add_cascade(label="Edición", menu=editar)
+
 
 # caja de text, donde se escribe ._.XD
 text = Text(root)
