@@ -95,8 +95,14 @@ bar.add_cascade(menu=more_menu, label="Sobre")
 
 # caja de text, donde se escribe ._.XD
 text = Text(root)
-text.pack(fill="both", expand=1)
-text.config(bd=0, padx=6, pady=4, font=("Arial", 14))
+text.pack(side=LEFT)
+text.config(bd=0, padx=6, pady=4, font=("Arial", 14), wrap=NONE)
+# Scrollbar para text
+scroll = Scrollbar(root)
+scroll.config(command=text.yview)
+scroll.pack(side=RIGHT, fill=Y)
+text.config(yscrollcommand=scroll.set)
+
 
 root.config(menu=bar)
 root.mainloop()
