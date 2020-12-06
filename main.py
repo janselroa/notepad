@@ -70,7 +70,7 @@ more_menu = Menu(bar, tearoff=0)
 more_menu.add_command(label="Licencia", command=about.display_license)
 more_menu.add_command(label="Créditos", command=about.display_credits)
 more_menu.add_command(label="Contacto", command=about.display_contact)
-bar.add_cascade(menu=more_menu, label="Sobre")
+bar.add_cascade(menu=more_menu, label="Acerca de...")
 
 # caja de text, donde se escribe ._.XD
 text = Text(root)
