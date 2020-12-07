@@ -55,10 +55,7 @@ def save_file_as():
         with open(url_file.name, "w+") as file:
             file.write(content)
             root.title(f"Archivo guardado en {url_file.name} {TITLE}")
-editor = Text(root, undo="true")
-
-editor.pack(side=TOP, fill=BOTH, expand=1)
-
+            
 def copiar():
 
     editor.clipboard_clear()
