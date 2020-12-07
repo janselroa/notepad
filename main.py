@@ -17,6 +17,18 @@ else:
     root.iconphoto(True, PhotoImage(os.path.join(sys.path[0], "img/icon.xbm")))
 
 url_file = ""
+
+# caja de text, donde se escribe ._.XD
+text = Text(root)
+text.pack(side=LEFT)
+text.config(bd=0, padx=6, pady=4, font=("Arial", 14), wrap=NONE)
+# Scrollbar para text
+scroll = Scrollbar(root)
+scroll.config(command=text.yview)
+scroll.pack(side=RIGHT, fill=Y)
+text.config(yscrollcommand=scroll.set)
+
+
 # Funciones
 
 def new_file():
@@ -58,35 +70,33 @@ def save_file_as():
             
 def copiar():
 
-    editor.clipboard_clear()
+    text.clipboard_clear()
 
-    editor.clipboard_append(editor.selection_get())
+    text.clipboard_append(text.selection_get())
 
 
 def pegar():
 
-    editor.insert(INSERT, editor.clipboard_get())
+    text.insert(INSERT, text.clipboard_get())
 
 
 def cortar():
 
-    editor.clipboard_clear()
+    text.clipboard_clear()
 
-    editor.clipboard_append(editor.selection_get())
+    text.clipboard_append(text.selection_get())
 
-    editor.delete("sel.first", "sel.last")
+    text.delete("sel.first", "sel.last")
 
 
 def deshacer():
 
-    editor.edit_undo()
+    text.edit_undo()
 
 
 def rehacer():
 
-    editor.edit_redo()
-
-
+    text.edit_redo()
 
 
 # Menú
@@ -116,15 +126,6 @@ more_menu.add_command(label="Créditos", command=about.display_credits)
 more_menu.add_command(label="Contacto", command=about.display_contact)
 bar.add_cascade(menu=more_menu, label="Ayuda")
 
-# caja de text, donde se escribe ._.XD
-text = Text(root)
-text.pack(side=LEFT)
-text.config(bd=0, padx=6, pady=4, font=("Arial", 14), wrap=NONE)
-# Scrollbar para text
-scroll = Scrollbar(root)
-scroll.config(command=text.yview)
-scroll.pack(side=RIGHT, fill=Y)
-text.config(yscrollcommand=scroll.set)
 
 
 root.config(menu=bar)
