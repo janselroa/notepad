@@ -19,7 +19,7 @@ else:
 url_file = ""
 
 # caja de text, donde se escribe ._.XD
-text = Text(root, undo="true")
+text = Text(root, undo=True)
 text.pack(side=LEFT)
 text.config(bd=0, padx=6, pady=4, font=("Arial", 14), wrap=NONE)
 # Scrollbar para text
