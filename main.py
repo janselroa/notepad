@@ -98,6 +98,9 @@ def rehacer():
 
     text.edit_redo()
 
+def fuente(a):
+    text.config(font=a)
+
 
 # Menú
 bar = Menu(root)
@@ -126,7 +129,20 @@ more_menu.add_command(label="Créditos", command=about.display_credits)
 more_menu.add_command(label="Contacto", command=about.display_contact)
 bar.add_cascade(menu=more_menu, label="Ayuda")
 
-
+ #fuente
+file_menu = Menu(bar, tearoff=0)
+file_menu.add_command(label="Arial", command=lambda:fuente("Arial"))
+file_menu.add_command(label="Georgia", command=lambda:fuente("Georgia"))
+file_menu.add_command(label="Times", command=lambda:fuente("Times"))
+file_menu.add_command(label="Franklin", command=lambda:fuente("Franklin"))
+file_menu.add_command(label="Segoe", command=lambda:fuente("Segoe"))
+file_menu.add_command(label="Lucida", command=lambda:fuente("Lucida"))
+file_menu.add_command(label="Cambria", command=lambda:fuente("Cambria"))
+file_menu.add_command(label="Impact", command=lambda:fuente("Impact"))
+file_menu.add_command(label="Courier", command=lambda:fuente("Courier"))
+file_menu.add_command(label="Verdana", command=lambda:fuente("Verdana"))
+file_menu.add_command(label="jerbreins mono", command=lambda:fuente("jerbreins"))
+bar.add_cascade(menu=file_menu, label="fuente")
 
 root.config(menu=bar)
 root.mainloop()
