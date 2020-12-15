@@ -22,8 +22,8 @@ def display_contact():
     m = """
 Si necesitas contactar en relacción con este programa, puedes hacerlo en nuestro repositorio de GitHub.
 
-Tambien puedes contactar a Jansel Roa con su correo janselroa2424@gmail.com
-y pablo corbalan como corbalandeconpablo@gmail.com
+Tambien puedes contactarme a mi correo janselroa2424@gmail.com
+
 
 """
     messagebox.showinfo("Contacto", m)
