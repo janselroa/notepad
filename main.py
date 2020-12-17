@@ -114,20 +114,13 @@ bar.add_cascade(menu=file_menu, label="Archivo")
 
 #menu de edicion
 editar = Menu(bar, tearoff=0)
-editar.add_command(label="Deshacer     ", command=deshacer)
-editar.add_command(label="Rehacer     ", command=rehacer)
+editar.add_command(label="Deshacer ", command=deshacer)
+editar.add_command(label="Rehacer ", command=rehacer)
 editar.add_separator()
-editar.add_command(label="Copiar     ", command=copiar)
-editar.add_command(label="Pegar     ", command=pegar)
-editar.add_command(label="Cortar     ", command=cortar)
+editar.add_command(label="Copiar", command=copiar)
+editar.add_command(label="Pegar ", command=pegar)
+editar.add_command(label="Cortar¡", command=cortar)
 bar.add_cascade(label="Edición", menu=editar)
-
-# menu de ayuda
-more_menu = Menu(bar, tearoff=0)
-more_menu.add_command(label="Licencia", command=about.display_license)
-more_menu.add_command(label="Créditos", command=about.display_credits)
-more_menu.add_command(label="Contacto", command=about.display_contact)
-bar.add_cascade(menu=more_menu, label="Ayuda")
 
  #fuente
 file_menu = Menu(bar, tearoff=0)
@@ -142,7 +135,15 @@ file_menu.add_command(label="Impact", command=lambda:fuente("Impact"))
 file_menu.add_command(label="Courier", command=lambda:fuente("Courier"))
 file_menu.add_command(label="Verdana", command=lambda:fuente("Verdana"))
 file_menu.add_command(label="jerbreins mono", command=lambda:fuente("jerbreins"))
-bar.add_cascade(menu=file_menu, label="fuente")
+bar.add_cascade(menu=file_menu, label="Fuente")
+
+# menu de ayuda
+more_menu = Menu(bar, tearoff=0)
+more_menu.add_command(label="Licencia", command=about.display_license)
+more_menu.add_command(label="Créditos", command=about.display_credits)
+more_menu.add_command(label="Contacto", command=about.display_contact)
+bar.add_cascade(menu=more_menu, label="Ayuda")
+
 
 root.config(menu=bar)
 root.mainloop()
