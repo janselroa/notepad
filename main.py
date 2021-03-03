@@ -59,7 +59,7 @@ def save_file():
             file.write(content)
             root.title(f"Archivo guardado en {url_file} {TITLE}")
 
-def save_file_as():
+def save_file_as(event=None):
     global url_file
     url_file = f.asksaveasfile(initialdir='.', filetypes=[("Archivos de texto", "*.txt"), ("Otros", "*")], title="Guardar archivo como")
     content = text.get(1.0, "end-1c")
@@ -89,18 +89,23 @@ def cortar():
     text.delete("sel.first", "sel.last")
 
 
-def deshacer():
+def deshacer(event=None):
 
     text.edit_undo()
 
 
-def rehacer():
+def rehacer(envent=None):
 
     text.edit_redo()
 
 def fuente(a):
     text.config(font=a)
 
+#eventos de teclado
+
+root.bind('<Control-s>', save_file_as)
+root.bind('<Control-z>', deshacer)
+root.bind('<Control-y>', rehacer)
 
 # Menú
 bar = Menu(root)
